@@ -1,0 +1,17 @@
+<html>
+<head>
+</head>
+
+<body>
+    <label for="score">Score:</label>
+    <input readonly id="score" type="text" value="0">
+    <button onclick="plusplus()">click</button>
+</body>
+
+<script>
+    function plusplus () {
+        let s = document.getElementById('score')
+        s.value = Number(s.value) + 1
+    }
+</script>
+</html>
