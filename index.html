@@ -14,7 +14,8 @@
         firebase.initializeApp(config);
         var database = firebase.database();
 
-        console.log(firebase)        
+
+
     </script>
 </head>
 
@@ -29,6 +30,13 @@
     <br>
     <br>
     <button onclick="submit_score()">submit</button>
+    <br>
+    <br>
+
+    <ol id="scoreslist">
+
+    </ol>
+
 </body>
 
 <script>
@@ -38,14 +46,44 @@
     }
 
     function submit_score () {
-        var ref = database.ref('scores');
+        var ref = database.ref('scores/');
 
         var data = {
             name: document.getElementById('user').value,
             score: Number(document.getElementById('score').value) 
         }
 
-        ref.push(data);
+        // Update - can update/create given key!!!!!!!!! 
+        var updates = {};
+        updates['/-LF2jOqgVlZU9BPk_XXX'] = data;
+        return ref.update(updates);
+        
+        // Push - creates NEW key and returnes it!
+        // var res = ref.push(data);
+        // console.log(res)
     }
+
+
+    // subscribe to data change event by success/fail callbacks:
+    var ref = database.ref('scores');
+    ref.on('value', getData, errData);
+
+    function getData(data) {
+        var vals = Object.values(data.val());
+
+        ol = document.getElementById('scoreslist');
+        ol.innerHTML = "";
+
+        for (var i=0; i < vals.length; i++) {
+            var li = document.createElement('li')
+            li.innerHTML = vals[i].name + ': ' + vals[i].score;
+            ol.appendChild(li)
+        }
+    }
+
+    function errData(err) {
+        console.log("errData ==>", err)
+    }
+
 </script>
 </html>
