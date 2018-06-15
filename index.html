@@ -1,17 +1,51 @@
 <html>
 <head>
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+        apiKey: "AIzaSyCUCKHZ_qNzQTTKSQFHMYfkRQTwrI44cTY",
+        authDomain: "fb-high-score-game.firebaseapp.com",
+        databaseURL: "https://fb-high-score-game.firebaseio.com",
+        projectId: "fb-high-score-game",
+        storageBucket: "",
+        messagingSenderId: "216923792298"
+        };
+        firebase.initializeApp(config);
+        var database = firebase.database();
+
+        console.log(firebase)        
+    </script>
 </head>
 
 <body>
+    <label for="user">User:</label>
+    <input id="user" type="text" value="hello">
+
     <label for="score">Score:</label>
     <input readonly id="score" type="text" value="0">
     <button onclick="plusplus()">click</button>
+    
+    <br>
+    <br>
+    <button onclick="submit_score()">submit</button>
 </body>
 
 <script>
     function plusplus () {
         let s = document.getElementById('score')
         s.value = Number(s.value) + 1
+    }
+
+    function submit_score () {
+        var ref = database.ref('scores');
+
+        var data = {
+            name: document.getElementById('user').value,
+            score: Number(document.getElementById('score').value) 
+        }
+
+        ref.push(data);
     }
 </script>
 </html>
