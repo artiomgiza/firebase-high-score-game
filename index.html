@@ -3,14 +3,27 @@
     <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
     <script>
         // Initialize Firebase
+
+        // ---- artiomg@gett.com -------
+        // var config = {
+        // apiKey: "AIzaSyCUCKHZ_qNzQTTKSQFHMYfkRQTwrI44cTY",
+        // authDomain: "fb-high-score-game.firebaseapp.com",
+        // databaseURL: "https://fb-high-score-game.firebaseio.com",
+        // projectId: "fb-high-score-game",
+        // storageBucket: "",
+        // messagingSenderId: "216923792298"
+        // };
+
+        // ---- artiomg.giza@gmail.com -------
         var config = {
-        apiKey: "AIzaSyCUCKHZ_qNzQTTKSQFHMYfkRQTwrI44cTY",
-        authDomain: "fb-high-score-game.firebaseapp.com",
-        databaseURL: "https://fb-high-score-game.firebaseio.com",
-        projectId: "fb-high-score-game",
-        storageBucket: "",
-        messagingSenderId: "216923792298"
+            apiKey: "AIzaSyCw3xn_7EAFIIQQ0RevMpcHdQth4BtaZUo",
+            authDomain: "fb-high-score-game-artik.firebaseapp.com",
+            databaseURL: "https://fb-high-score-game-artik.firebaseio.com",
+            projectId: "fb-high-score-game-artik",
+            storageBucket: "",
+            messagingSenderId: "956493468254"
         };
+        
         firebase.initializeApp(config);
         var database = firebase.database();
 
@@ -54,13 +67,13 @@
         }
 
         // Update - can update/create given key!!!!!!!!! 
-        var updates = {};
-        updates['/-LF2jOqgVlZU9BPk_XXX'] = data;
-        return ref.update(updates);
+        //     var updates = {};
+        //     updates['/-LF2jOqgVlZU9BPk_XXX'] = data;
+        //     return ref.update(updates);
         
         // Push - creates NEW key and returnes it!
-        // var res = ref.push(data);
-        // console.log(res)
+             var res = ref.push(data);
+             console.log(res)
     }
 
 
